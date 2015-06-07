@@ -1,3 +1,5 @@
+import scoverage.ScoverageSbtPlugin.ScoverageKeys
+
 name := "Utils"
 
 version := "1.0"
