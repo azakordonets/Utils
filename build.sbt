@@ -12,4 +12,12 @@ libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % "1.2.0",
   "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2"
 )
+
+ScoverageKeys.coverageMinimum := 90
+
+ScoverageKeys.coverageFailOnMinimum := true
+
+ScoverageKeys.coverageHighlighting := {
+  if (scalaBinaryVersion.value == "2.10") true else false
+}
     
