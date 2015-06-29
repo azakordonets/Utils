@@ -21,7 +21,7 @@ class DateTimeUtils {
 
   def relativeDate(timeZone: DateTimeZone): RelativeDate = new RelativeDate(timeZone)
 
-  def getNext(dayOfTheWeek: Day) = {
+  def getNext(dayOfTheWeek: Day): LocalDate = {
     getNext(dayOfTheWeek, startingPoint = LocalDate.now())
   }
 
