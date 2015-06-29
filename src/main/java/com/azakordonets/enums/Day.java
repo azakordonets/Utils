@@ -10,13 +10,13 @@ public enum Day {
     SATURDAY(6),
     SUNDAY(7);
 
-    private final int dayOfTheWeek;
+    private final int dayInTheWeek;
 
-    Day(int dayOfTheWeek){
-        this.dayOfTheWeek = dayOfTheWeek;
+    Day(int dayInTheWeek){
+        this.dayInTheWeek = dayInTheWeek;
     }
 
-    public int getDayOfWeek() {
-        return this.dayOfTheWeek;
+    public int getIndex() {
+        return this.dayInTheWeek;
     }
 }

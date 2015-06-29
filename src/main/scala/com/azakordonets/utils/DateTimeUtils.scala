@@ -1,9 +1,10 @@
 package com.azakordonets.utils
 
 
-import com.azakordonets.entities.{DatesRange, RelativeDate}
+import com.azakordonets.entities.{DatesRange, NextDay, RelativeDate}
 import com.azakordonets.enums.Day
 import org.joda.time.{DateTime, DateTimeZone, LocalDate}
+
 
 object DateTimeUtils {
   def apply(): DateTimeUtils = {
@@ -21,20 +22,11 @@ class DateTimeUtils {
 
   def relativeDate(timeZone: DateTimeZone): RelativeDate = new RelativeDate(timeZone)
 
-  def getNext(dayOfTheWeek: Day): LocalDate = {
-    getNext(dayOfTheWeek, startingPoint = LocalDate.now())
-  }
+  def getNext(dayOfWeek: Day): NextDay = NextDay(dayOfWeek)
 
-  def getNext(dayOfTheWeek: Day, startingPoint: LocalDate): LocalDate = {
-    val expectedDay: LocalDate = startingPoint.dayOfWeek().setCopy(dayOfTheWeek.getDayOfWeek)
-    if (startingPoint.getDayOfWeek == dayOfTheWeek.getDayOfWeek) {
-      return startingPoint.plusWeeks(1)
-    }
-    if (expectedDay.isBefore(startingPoint)) {
-      startingPoint.plusWeeks(1).dayOfWeek().setCopy(dayOfTheWeek.getDayOfWeek)
-    } else {
-      startingPoint.dayOfWeek().setCopy(dayOfTheWeek.getDayOfWeek)
-    }
-  }
+  def getNext(dayOfWeek: Day, startPoint: LocalDate): NextDay = NextDay(dayOfWeek, startPoint)
+
+
+
 
 }

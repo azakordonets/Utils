@@ -21,9 +21,9 @@ class DateTimeUtilsTestSuite extends DateTimeBaseTestSuite {
 
   @Test(dataProvider = "nextDayDP")
   def testNextDay(nextDay: Day) = {
-    val nextDate: LocalDate = DateTime.getNext(nextDay)
+    val nextDate: LocalDate = DateTime.getNext(nextDay).asDate
     val currentDate: LocalDate = LocalDate.now()
-    assertResult(nextDay.getDayOfWeek)(nextDate.getDayOfWeek)
+    assertResult(nextDay.getIndex)(nextDate.getDayOfWeek)
     assert(Days.daysBetween(nextDate, currentDate).getDays <= 7)
   }
 
@@ -42,7 +42,7 @@ class DateTimeUtilsTestSuite extends DateTimeBaseTestSuite {
   @Test(dataProvider = "nextDayWithCustomDateDP")
   def testNextDayWithCustomDate(nextDay: Day, expectedDate: LocalDate) = {
     val startPoint = LocalDate.parse("2015-06-22")
-    val nextDate: LocalDate = DateTime.getNext(nextDay, startPoint)
+    val nextDate: LocalDate = DateTime.getNext(nextDay, startPoint).asDate
     assertResult(expectedDate)(nextDate)
   }
 

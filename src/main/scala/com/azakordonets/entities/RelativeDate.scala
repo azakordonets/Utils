@@ -84,17 +84,11 @@ class RelativeDate(private val initialDate: DateTime = DateTime.now()) {
     this
   }
 
-  def asString(): String = {
-    asString(DateFormat.dd_MM_yyyy)
-  }
+  def asString: String = asString(DateFormat.dd_MM_yyyy)
 
-  def asString(format: DateFormat): String = {
-    date.toString(format.getFormat)
-  }
+  def asString(format: DateFormat): String = date.toString(format.getFormat)
 
-  def asDate(): DateTime = {
-    date
-  }
+  def asDate: DateTime = date
 
 }
 
