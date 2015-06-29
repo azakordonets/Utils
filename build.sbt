@@ -6,6 +6,18 @@ version := "1.0"
 
 scalaVersion := "2.11.4"
 
+  resolvers ++= Seq(
+    "RoundEights" at "http://maven.spikemark.net/roundeights"
+)
+
+resolvers ++= Seq(
+  "jBCrypt Repository" at "http://repo1.maven.org/maven2/org/"
+)
+
+libraryDependencies ++= Seq(
+  "org.mindrot" % "jbcrypt" % "0.3m"
+)
+
 libraryDependencies ++= Seq(
   "org.testng" % "testng" % "6.8.8" % "test",
   "org.scalatest" %% "scalatest" % "3.0.0-SNAP4" % "test",
