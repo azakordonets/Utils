@@ -1,8 +1,8 @@
 package com.azakordonets.utils
 
-object FUtils {
+object GetUtil {
 
-  def dateTime(): DateTimeUtils = {
+  def DateTimeUtil(): DateTimeUtils = {
         DateTimeUtils()
   }
 

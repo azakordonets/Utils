@@ -1,7 +1,7 @@
 package com.azakordonets.tests
 
 import com.azakordonets.enums.Day
-import com.azakordonets.utils.FUtils
+import com.azakordonets.utils.GetUtil._
 import org.joda.time.{Days, LocalDate}
 import org.testng.annotations.{DataProvider, Test}
 
@@ -21,7 +21,7 @@ class DateTimeUtilsTestSuite extends DateTimeBaseTestSuite {
 
   @Test(dataProvider = "nextDayDP")
   def testNextDay(nextDay: Day) = {
-    val nextDate: LocalDate = FUtils.dateTime().getNext(nextDay)
+    val nextDate: LocalDate = DateTimeUtil.getNext(nextDay)
     val currentDate: LocalDate = LocalDate.now()
     assertResult(nextDay.getDayOfWeek)(nextDate.getDayOfWeek)
     assert(Days.daysBetween(nextDate, currentDate).getDays <= 7)
@@ -42,7 +42,7 @@ class DateTimeUtilsTestSuite extends DateTimeBaseTestSuite {
   @Test(dataProvider = "nextDayWithCustomDateDP")
   def testNextDayWithCustomDate(nextDay: Day, expectedDate: LocalDate) = {
     val startPoint = LocalDate.parse("2015-06-22")
-    val nextDate: LocalDate = FUtils.dateTime().getNext(nextDay, startPoint)
+    val nextDate: LocalDate = DateTimeUtil.getNext(nextDay, startPoint)
     assertResult(expectedDate)(nextDate)
   }
 
