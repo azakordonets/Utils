@@ -8,7 +8,7 @@ object GetUtil {
         DateTimeUtils()
   }
 
-  def Hashing(string: String): Hasher = {
+  def Hash(string: String): Hasher = {
     Hasher(string)
   }
 

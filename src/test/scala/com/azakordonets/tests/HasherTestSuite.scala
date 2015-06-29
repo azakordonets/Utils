@@ -34,18 +34,18 @@ class HasherTestSuite extends TestNGSuite with LazyLogging {
   def testAlgorithms(algo: String, value: String, key: String, useSalt: Boolean, salt: String, iterations: Int, length: Int, expectedResults: String) = {
     var result: String = ""
     algo match {
-      case "md5" => result = if (useSalt) Hashing(value).salt(salt).md5 else Hashing(value).md5
-      case "sha1" => result = if (useSalt) Hashing(value).salt(salt).sha1 else Hashing(value).sha1
-      case "sha256" => result = if (useSalt) Hashing(value).salt(salt).sha256 else Hashing(value).sha256
-      case "sha512" => result = if (useSalt) Hashing(value).salt(salt).sha512 else Hashing(value).sha512
-      case "hmac_md5" => result = if (useSalt) Hashing(value).salt(salt).hmac_md5(key) else Hashing(value).hmac_md5(key)
-      case "hmac_sha1" => result = if (useSalt) Hashing(value).salt(salt).hmac_sha1(key) else Hashing(value).hmac_sha1(key)
-      case "hmac_sha256" => result = if (useSalt) Hashing(value).salt(salt).hmac_sha256(key) else Hashing(value).hmac_sha256(key)
-      case "hmac_sha512" => result = if (useSalt) Hashing(value).salt(salt).hmac_sha512(key) else Hashing(value).hmac_sha512(key)
-      case "pbkdf2" => result = Hashing(value).pbkdf2(salt, iterations, length)
+      case "md5" => result = if (useSalt) Hash(value).salt(salt).md5 else Hash(value).md5
+      case "sha1" => result = if (useSalt) Hash(value).salt(salt).sha1 else Hash(value).sha1
+      case "sha256" => result = if (useSalt) Hash(value).salt(salt).sha256 else Hash(value).sha256
+      case "sha512" => result = if (useSalt) Hash(value).salt(salt).sha512 else Hash(value).sha512
+      case "hmac_md5" => result = if (useSalt) Hash(value).salt(salt).hmac_md5(key) else Hash(value).hmac_md5(key)
+      case "hmac_sha1" => result = if (useSalt) Hash(value).salt(salt).hmac_sha1(key) else Hash(value).hmac_sha1(key)
+      case "hmac_sha256" => result = if (useSalt) Hash(value).salt(salt).hmac_sha256(key) else Hash(value).hmac_sha256(key)
+      case "hmac_sha512" => result = if (useSalt) Hash(value).salt(salt).hmac_sha512(key) else Hash(value).hmac_sha512(key)
+      case "pbkdf2" => result = Hash(value).pbkdf2(salt, iterations, length)
     }
     assertResult(expectedResults)(result)
-    assert(Hasher(value).bcrypt.hash = Hashing(value).bcrypt)
+    assert(Hasher(value).bcrypt.hash = Hash(value).bcrypt)
   }
 
 
