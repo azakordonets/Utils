@@ -1,6 +1,6 @@
 package com.azakordonets.tests
 
-import com.azakordonets.enums.Day
+import com.azakordonets.enums.{DateFormat, Day}
 import com.azakordonets.utils.GetUtil._
 import org.joda.time.{Days, LocalDate}
 import org.testng.annotations.{DataProvider, Test}
@@ -44,6 +44,20 @@ class DateTimeUtilsTestSuite extends DateTimeBaseTestSuite {
     val startPoint = LocalDate.parse("2015-06-22")
     val nextDate: LocalDate = DateTime.getNext(nextDay, startPoint).asDate
     assertResult(expectedDate)(nextDate)
+  }
+
+  @Test
+  def testNextDayAsDefaultString() = {
+    val startPoint = LocalDate.parse("2015-06-22")
+    val nextDate: String = DateTime.getNext(Day.MONDAY, startPoint).asString
+    assertResult(LocalDate.parse("2015-06-29").toString("dd-MM-yyyy"))(nextDate)
+  }
+
+  @Test
+  def testNextDayAsCustomString() = {
+    val startPoint = LocalDate.parse("2015-06-22")
+    val nextDate: String = DateTime.getNext(Day.MONDAY, startPoint).asString(DateFormat.dd_MM_yy)
+    assertResult(LocalDate.parse("2015-06-29").toString("dd-MM-yy"))(nextDate)
   }
 
 }
