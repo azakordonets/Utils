@@ -4,6 +4,7 @@ package com.azakordonets.tests
 import com.azakordonets.entities.DatesRange
 import com.azakordonets.enums.DateRangeType._
 import com.azakordonets.enums.{DateFormat, DateRangeType}
+import com.azakordonets.utils.GetUtil
 import org.joda.time.DateTime
 import org.joda.time.format.{DateTimeFormat, DateTimeFormatter}
 import org.testng.annotations.{BeforeMethod, DataProvider, Test}
@@ -14,7 +15,7 @@ class DatesRangeTestSuite extends DateTimeBaseTestSuite {
 
   @BeforeMethod
   def init() = {
-    dateRange = new DatesRange
+    dateRange = GetUtil.DateTime.datesRange
   }
 
   @Test

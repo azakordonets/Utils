@@ -2,6 +2,7 @@ package com.azakordonets.tests
 
 import com.azakordonets.entities.RelativeDate
 import com.azakordonets.enums.DateFormat
+import com.azakordonets.utils.GetUtil
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.{DateTime, DateTimeZone}
 import org.testng.annotations.{BeforeMethod, Test}
@@ -13,7 +14,7 @@ class RelativeDateTestSuite extends DateTimeBaseTestSuite {
 
   @BeforeMethod
   def init() = {
-    relativeDate = new RelativeDate()
+    relativeDate = GetUtil.DateTime.relativeDate
   }
 
   @Test

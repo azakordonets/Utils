@@ -1,10 +1,9 @@
 package com.azakordonets.entities
 
-import com.azakordonets.enums.{DateRangeType, DateFormat}
-import scala.collection.JavaConverters._
-
+import com.azakordonets.enums.{DateFormat, DateRangeType}
 import org.joda.time.DateTime
 
+import scala.collection.JavaConverters._
 import scala.collection.mutable.ListBuffer
 
 class DatesRange {
@@ -114,6 +113,10 @@ class DatesRange {
     list.map(_.toString(format.getFormat))
   }
 
+  /**
+   * By default returns list out Date object that starts today, ends in a year with a step of 1 month
+   * @return
+   */
   def asDatesList: List[DateTime] = {
     getRangeListBuffer.toList
   }
